@@ -1,0 +1,523 @@
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Produk Satria - Toko Online
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9fafb;
+    color: #374151;
+   }
+   /* Navbar */
+   nav {
+    background: #4f46e5;
+   }
+   nav a.text-indigo-600 {
+    color: #e0e7ff;
+    transition: color 0.3s ease;
+   }
+   nav a.text-indigo-600:hover {
+    color: #c7d2fe;
+   }
+   /* Hero */
+   #home {
+    background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+    color: #f9fafb;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+   }
+   #home a {
+    box-shadow: 0 4px 15px rgba(255,255,255,0.4);
+   }
+   #home a:hover {
+    box-shadow: 0 6px 20px rgba(255,255,255,0.6);
+   }
+   /* Produk cards */
+   #produk .bg-white {
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(79,70,229,0.3), 0 4px 6px -2px rgba(79,70,229,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+   #produk .bg-white:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(79,70,229,0.4), 0 10px 10px -5px rgba(79,70,229,0.2);
+   }
+   #produk h3 {
+    color: #4338ca;
+   }
+   #produk button.buy-btn {
+    background: #4338ca;
+    box-shadow: 0 4px 15px rgba(67,56,202,0.4);
+    font-weight: 600;
+   }
+   #produk button.buy-btn:hover {
+    background: #3730a3;
+    box-shadow: 0 6px 20px rgba(55,48,163,0.6);
+   }
+   /* Modal */
+   #payment-modal > div {
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(79,70,229,0.5);
+   }
+   #payment-modal h3, #payment-modal p, #payment-modal h4 {
+    color: #4338ca;
+   }
+   #payment-modal button#copy-dana-number {
+    background: #4338ca;
+    box-shadow: 0 4px 15px rgba(67,56,202,0.4);
+    font-weight: 600;
+   }
+   #payment-modal button#copy-dana-number:hover {
+    background: #3730a3;
+    box-shadow: 0 6px 20px rgba(55,48,163,0.6);
+   }
+   #payment-modal button#whatsapp-admin {
+    background: #22c55e;
+    box-shadow: 0 4px 15px rgba(34,197,94,0.4);
+    font-weight: 600;
+   }
+   #payment-modal button#whatsapp-admin:hover {
+    background: #16a34a;
+    box-shadow: 0 6px 20px rgba(22,163,74,0.6);
+   }
+   /* Testimoni */
+   #testimoni h2 {
+    color: #4338ca;
+    text-shadow: 0 1px 3px rgba(67,56,202,0.5);
+   }
+   #testimoni a {
+    background: #22c55e;
+    box-shadow: 0 4px 15px rgba(34,197,94,0.4);
+    font-weight: 600;
+    border-radius: 9999px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    display: inline-block;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+   }
+   #testimoni a:hover {
+    background: #16a34a;
+    box-shadow: 0 6px 20px rgba(22,163,74,0.6);
+   }
+   /* Order form */
+   #order h2 {
+    color: #4338ca;
+   }
+   #order form {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(79,70,229,0.3);
+    background: #fff;
+   }
+   #order form label {
+    color: #4338ca;
+    font-weight: 600;
+   }
+   #order form input, #order form textarea {
+    border-radius: 0.5rem;
+    border-color: #c7d2fe;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+   }
+   #order form input:focus, #order form textarea:focus {
+    border-color: #4338ca;
+    box-shadow: 0 0 8px rgba(67,56,202,0.5);
+    outline: none;
+   }
+   #order form button {
+    background: #4338ca;
+    box-shadow: 0 4px 15px rgba(67,56,202,0.4);
+    font-weight: 600;
+    border-radius: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+   }
+   #order form button:hover {
+    background: #3730a3;
+    box-shadow: 0 6px 20px rgba(55,48,163,0.6);
+   }
+   #order-payment-info {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(79,70,229,0.3);
+    background: #fff;
+   }
+   #order-payment-info h3 {
+    color: #4338ca;
+   }
+   #order-payment-info button {
+    background: #4338ca;
+    box-shadow: 0 4px 15px rgba(67,56,202,0.4);
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+   }
+   #order-payment-info button:hover {
+    background: #3730a3;
+    box-shadow: 0 6px 20px rgba(55,48,163,0.6);
+   }
+   #order-payment-info a {
+    background: #22c55e;
+    box-shadow: 0 4px 15px rgba(34,197,94,0.4);
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+   }
+   #order-payment-info a:hover {
+    background: #16a34a;
+    box-shadow: 0 6px 20px rgba(22,163,74,0.6);
+   }
+   /* Sosial Media */
+   #kontak h2 {
+    color: #e0e7ff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+   }
+   #kontak .social-icons {
+    background: #3730a3;
+    border-radius: 1.5rem;
+    padding: 1rem 2rem;
+    box-shadow: 0 10px 25px -5px rgba(55,48,163,0.5);
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 360px;
+    margin: 0 auto;
+   }
+   #kontak .social-icons a {
+    color: #e0e7ff;
+    font-size: 2.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+   }
+   #kontak .social-icons a:hover {
+    transform: scale(1.2);
+   }
+   #kontak .social-icons a.youtube:hover {
+    color: #ff0000;
+   }
+   #kontak .social-icons a.tiktok:hover {
+    color: #fe2c55;
+   }
+   #kontak .social-icons a.instagram:hover {
+    color: #e4405f;
+   }
+   /* Footer */
+   footer {
+    background: #4f46e5;
+    color: #e0e7ff;
+    font-weight: 600;
+    box-shadow: 0 -5px 15px rgba(79,70,229,0.4);
+   }
+   /* Responsive tweaks */
+   @media (max-width: 768px) {
+    #produk {
+     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+    #kontak .social-icons {
+     gap: 2rem;
+     max-width: 100%;
+     padding: 1rem;
+    }
+   }
+  </style>
+ </head>
+ <body>
+  <!-- Navbar -->
+  <nav class="shadow sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+     <a class="text-indigo-100 text-2xl font-bold" href="#home">
+      PRODUK SATRIA
+     </a>
+     <div class="hidden md:flex space-x-8 font-semibold">
+      <a class="hover:text-indigo-300 transition" href="#produk">
+       Produk
+      </a>
+      <a class="hover:text-indigo-300 transition" href="#testimoni">
+       Testimoni
+      </a>
+      <a class="hover:text-indigo-300 transition" href="#order">
+       Order
+      </a>
+      <a class="hover:text-indigo-300 transition" href="#kontak">
+       Kontak
+      </a>
+     </div>
+     <div class="md:hidden">
+      <button class="focus:outline-none" id="menu-btn">
+       <i class="fas fa-bars text-2xl text-indigo-100">
+       </i>
+      </button>
+     </div>
+    </div>
+   </div>
+   <div class="hidden md:hidden bg-indigo-700 border-t border-indigo-500" id="mobile-menu">
+    <a class="block px-4 py-3 border-b border-indigo-500 font-semibold hover:bg-indigo-600" href="#produk">
+     Produk
+    </a>
+    <a class="block px-4 py-3 border-b border-indigo-500 font-semibold hover:bg-indigo-600" href="#testimoni">
+     Testimoni
+    </a>
+    <a class="block px-4 py-3 border-b border-indigo-500 font-semibold hover:bg-indigo-600" href="#order">
+     Order
+    </a>
+    <a class="block px-4 py-3 font-semibold hover:bg-indigo-600" href="#kontak">
+     Kontak
+    </a>
+   </div>
+  </nav>
+  <!-- Hero Section -->
+  <section class="py-20 px-6 text-center" id="home">
+   <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+    Selamat Datang di Produk Satria
+   </h1>
+   <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
+    Produk berkualitas dengan metode pembayaran mudah dan cepat. Pilih produk favoritmu dan bayar dengan QRIS Dana Bisa Request Kebutuhan Lain Nya Hubungi WhatsApp di Bawah !
+   </p>
+   <a class="inline-block bg-white text-indigo-700 font-semibold px-8 py-3 rounded-lg shadow hover:bg-gray-100 transition" href="#produk">
+    Lihat Produk
+   </a>
+  </section>
+  <!-- Produk Section -->
+  <section class="max-w-7xl mx-auto px-6 py-16" id="produk">
+   <h2 class="text-3xl font-bold text-center mb-12">
+    Produk Kami
+   </h2>
+   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+    <!-- Produk 1 -->
+    <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+     <img alt="Produk 1: Smartphone Android warna hitam dengan layar besar dan desain modern" class="rounded-md mb-4 object-cover h-40 w-full" src="https://files.catbox.moe/0d1e7n.jpg?text=Produk+1+Satria+Hitam"/>
+     <h3 class="text-xl font-semibold mb-2">
+      MURID MARGA SATRIA
+     </h3>
+     <p class="text-gray-600 mb-1">OPEN MARGA SATRIA 07</p>
+<p class="text-gray-600 mb-1">ADA HARGA ADA KUALITAS</p>
+<p class="text-gray-600 mb-1"> GA DERES REFF</p>
+<p class="text-gray-600 mb-4"> PROMO 100k -2SLOT HARGA ASLI 150K
+MINIMAL DP 100K ASAL LUNAS</p>
+
+<p class="text-gray-600 mb-1"> KEUNTUNGAN :</p>
+<p class="text-gray-600 mb-1"> DAPET 1 AKSES CPANEL + PUSAT</p>
+<p class="text-gray-600 mb-1"> RESS DERES PERDETIK & GACOR</p>
+<p class="text-gray-600 mb-1"> PT² 10K PERMINGGU</p>
+<p class="text-gray-600 mb-1"> BEBAS CREATE PANEL</p>
+<p class="text-gray-600 mb-1"> RESS ANTI AUTO RESS</p>
+<p class="text-gray-600 mb-1"> TIAP MINGGU GANTI NAMA RESS</p>
+
+<p class="text-gray-600 mb-1"> BISA OPEN :</p>
+<p class="text-gray-600 mb-1"> BISA OPEN TEAM RESS</p>
+<p class="text-gray-600 mb-1"> BISA OPEN ADMIN TEAM RESS </p>
+<p class="text-gray-600 mb-1"> BISA OPEN PT JASTEB </p>
+<p class="text-gray-600 mb-1"> BISA OPEN SEWA PANEL JASTEB </p>
+<p class="text-gray-600 mb-1"> BISA JUALAN JASTEBA</p>
+<p class="text-gray-600 mb-1"> BISA JUALAN UNCHEK </p>
+<p class="text-gray-600 mb-1"> DLL DI JAMIN BALMOD RATUSAN JUTAAN ASAL NIAT</p>
+     <div class="mt-auto">
+      <button class="buy-btn w-full py-2 rounded text-white hover:bg-indigo-900 transition" data-price="100000" data-product="MARGA SATRIA">
+       Beli Rp 100.000
+      </button>
+     </div>
+    </div>
+    <!-- Produk 2 -->
+    <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+     <img alt="Produk 2: Headphone wireless warna hitam dengan bantalan empuk dan desain ergonomis" class="rounded-md mb-4 object-cover h-40 w-full" src="https://files.catbox.moe/dirur1.png?text=Produk+2+Headphone+Wireless+Hitam"/>
+     <h3 class="text-xl font-semibold mb-2">
+      TEAM JASTEB
+     </h3>
+     <p class="text-gray-600 mb-4">OPEN PANEL JASTEB</p>
+
+<p class="text-gray-600 mb-1">  20K = 1000++ RESS
+<p class="text-gray-600 mb-1">  40K = 3000++ RESS
+<p class="text-gray-600 mb-1">  60K = 6000++ RESS
+<p class="text-gray-600 mb-1">  80K = 12000++ RESS
+<p class="text-gray-600 mb-4">  100K = 24000++ RESS
+
+<p class="text-gray-600 mb-1">NOTE PENTING
+<p class="text-gray-600 mb-1">PANEL JASTEB RESS VIA WEBSITE, AMAN DAN LANGSUNG MASUK ANTI DELAY
+<p class="text-gray-600 mb-4">PANEL FULL GARANSI, JIKA ADA KENDALA LAPOR KE ADMIN DAN CLAIM PANEL BARU
+
+<p class="text-gray-600 mb-1"> ✓KEUNTUNGAN
+<p class="text-gray-600 mb-1"> ✓BISA GACHA
+<p class="text-gray-600 mb-1"> ✓BISA DI JUAL KEMBALI
+<p class="text-gray-600 mb-1"> ✓BERGARANSI FULL
+<p class="text-gray-600 mb-1"> ✓ANTI DELAY, MOKAD, EROR 404
+<p class="text-gray-600 mb-1"> ✓BISA STOK AKUN
+<p class="text-gray-600 mb-1"> ✓RESS MASUK SESUAI TARGET DAN SETIAP HARI DI PROSES
+<p class="text-gray-600 mb-1"> ✓JIKA SUDAH FULL SESUAI TARGET AKAN ADA WAKTU 48 JAM SEBELUM MODAR
+<p class="text-gray-600 mb-1"> ✓RESS MURNI NEBAR FACEBOOK, TIKTOK, INSTAGRAM, WHATSAPP
+<p class="text-gray-600 mb-1"> ✓RESS MURNI DARI WEBP DAN GACOR
+<p class="text-gray-600 mb-1"> ✓BISA JUALAN UNCHEK SS JUGA
+<p class="text-gray-600 mb-1"> ✓RESS ANTI RUSUH/DELAY/ORANG JPM
+<p class="text-gray-600 mb-1"> ✓DAN BANYAK KEUNTUNGAN LAIN NYA ✅</p>
+ <p class="text-gray-600 mb-1"> BISA DP 50K ASAL LUNAS</p>
+     <div class="mt-auto">
+      <button class="buy-btn w-full py-2 rounded text-white hover:bg-indigo-900 transition" data-price="100000" data-product="TEAM JASTEB">
+       Beli Rp 100.000
+      </button>
+     </div>
+    </div>
+    <!-- Produk 3 -->
+    <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+     <img alt="Produk 3: Smartwatch sporty warna hitam dengan layar sentuh dan fitur kebugaran" class="rounded-md mb-4 object-cover h-40 w-full" src="https://files.catbox.moe/up3tg6.png?text=Produk+3+Smartwatch+Sporty+Hitam"/>
+     <h3 class="text-xl font-semibold mb-2">
+      UNCHEK & JASTEB
+     </h3>
+     <p class="text-gray-600 mb-4">
+ <p class="text-gray-600 mb-1"> ʟɪꜱᴛ ʜᴀʀɢᴀ
+ <p class="text-gray-600 mb-1"> 𝟧ᴋ 𝟣𝟧 ᴜɴᴄʜᴇᴋ 
+ <p class="text-gray-600 mb-1"> 𝟣𝟢ᴋ 𝟥𝟢 ᴜɴᴄʜᴇᴋ 
+ <p class="text-gray-600 mb-1"> 𝟣𝟧ᴋ 𝟧𝟢 ᴜɴᴄʜᴇᴋ 
+ <p class="text-gray-600 mb-1"> 𝟤𝟢ᴋ 𝟩𝟢 ᴜɴᴄʜᴇᴋ 
+ <p class="text-gray-600 mb-1"> 𝟥𝟢ᴋ 𝟣𝟢𝟢 ᴜɴᴄʜᴇᴋ 
+
+ <p class="text-gray-600 mb-1">ᴊᴀꜱᴛᴇʙ 
+ <p class="text-gray-600 mb-1">𝟧ᴋ ʀᴇꜱꜱ 𝟧𝟢+
+ <p class="text-gray-600 mb-1">𝟣𝟢ᴋ ʀᴇꜱꜱ 𝟣𝟢𝟢+
+ <p class="text-gray-600 mb-1">𝟣𝟧ᴋ ʀᴇꜱꜱ 𝟣𝟧𝟢+
+ <p class="text-gray-600 mb-1">𝟤𝟢ᴋ ʀᴇꜱꜱ 𝟤𝟢𝟢+
+ <p class="text-gray-600 mb-1">𝟤𝟧ᴋ ʀᴇꜱꜱ 𝟤𝟧𝟢+
+     </p>
+     <div class="mt-auto">
+      <button class="buy-btn w-full py-2 rounded text-white hover:bg-indigo-900 transition" data-price="" data-product="UNCHEK & JASTEB">
+       HARGA DI LIST ATAS
+      </button>
+     </div>
+    </div>
+    <!-- Produk 4 -->
+    <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+     <img alt="Produk 4: Speaker bluetooth portable warna hitam dengan desain kompak dan suara bass kuat" class="rounded-md mb-4 object-cover h-40 w-full" src="https://files.catbox.moe/rljm7j.png?text=Produk+4+Speaker+Bluetooth+Portable"/>
+     <h3 class="text-xl font-semibold mb-2">
+      MURID NEBAR PRIVATE
+     </h3>
+     <p class="text-gray-600 mb-4">
+ <p class="text-gray-600 mb-1">OPEN MURID TEBAR PRIVAT SATRIA
+
+ <p class="text-gray-600 mb-1">HARGA = 25K PER ORANG DAN SELAMA NYA
+
+ <p class="text-gray-600 mb-1">KEUNTUNGAN DAN KELEBIHAN JOIN DI SATRIA
+ <p class="text-gray-600 mb-1">✓BISA NEBAR TIKTOK TANPA ADS
+ <p class="text-gray-600 mb-1">✓DI AJARIN NEBAR METODE ZOOM, FOTO, VIDEO, DLL
+ <p class="text-gray-600 mb-1">✓DI KASIH WEBP BANYAK PILIHAN TERMASUK GAME DLL
+ <p class="text-gray-600 mb-1">✓DI KASIH HASTAG FYP
+ <p class="text-gray-600 mb-1">✓DI AJARIN CARA BUAT HASTAG FYP
+ <p class="text-gray-600 mb-1">✓DI AJARIN CARA BUAT BAHAN NEBAR
+ <p class="text-gray-600 mb-1">✓ SUDAH ADA TUTORIAL LENGKAP DAN BAHAN LENGKAP
+ <p class="text-gray-600 mb-1">✓BISA JADI KANG ENCERAN UNCHEK
+ <p class="text-gray-600 mb-1">✓NEBAR JADI GK RIBET DAN LEBIH GAMPANG
+ <p class="text-gray-600 mb-1">✓DI KASIH TAU TUTORIAL CARA MASANG LINK DI BIO TIKTOK TANPA 1K
+FOLOWER
+ <p class="text-gray-600 mb-1">✓SETIAP MINGGUNYA AKAN DI SHARE BAHAN BARU/VIRAL
+ <p class="text-gray-600 mb-1">✓DI AJARIN CARA NEBAR WHATSAPP GRUB/SALURAN
+ <p class="text-gray-600 mb-1">✓DAPAT TUTORIAL PUSH MEMBER DENGAN DERES DAN GG
+ <p class="text-gray-600 mb-1">✓DAPAT APK / WEB JPM
+ <p class="text-gray-600 mb-1">✓TEKS DI UPDATE SELALU
+ <p class="text-gray-600 mb-1">✓BISA NEBAR 99+ NOTIF GRUB
+ <p class="text-gray-600 mb-1">✓DAN LAIN LAIN NYA
+     </p>
+     <div class="mt-auto">
+      <button class="buy-btn w-full py-2 rounded text-white hover:bg-indigo-900 transition" data-price="25000" data-product="MURID NEBAR PRIVATE">
+       Beli Rp 25.000
+      </button>
+     </div>
+    </div>
+    <!-- Produk 5 -->
+    <div class="bg-white rounded-lg shadow p-5 flex flex-col">
+     <img alt="Produk 5: Powerbank kapasitas 10000mAh warna hitam dengan desain ramping dan port USB ganda" class="rounded-md mb-4 object-cover h-40 w-full" src="https://files.catbox.moe/shmflc.png?text=Produk+5+Powerbank+10000mAh+Hitam"/>
+     <h3 class="text-xl font-semibold mb-2">
+      PT JASTEB 
+     </h3>
+     <p class="text-gray-600 mb-4">
+<p class="text-gray-600 mb-1">PANEL BERSAMA 15K
+
+<p class="text-gray-600 mb-1">PANEL PRIBADI 25k
+
+<p class="text-gray-600 mb-1">KEUNTUNGAN:
+<p class="text-gray-600 mb-1">* BISA JUALAN JASTEB 
+<p class="text-gray-600 mb-1">* BISA JUALAN UNCHEK 
+<p class="text-gray-600 mb-1">* BISA JUALAN SGMAIL
+<p class="text-gray-600 mb-1">* BISA CEK JASTEB SEPUASNYA 
+<p class="text-gray-600 mb-1">* BISA STOK AKUN
+<p class="text-gray-600 mb-1">* RESS MURNI + DERES
+<p class="text-gray-600 mb-1">*  PT PT? JARANG
+     </p>
+     <div class="mt-auto">
+      <button class="buy-btn w-full py-2 rounded text-white hover:bg-indigo-900 transition" data-price="25000" data-product="PT JASTEB">
+       Beli Rp 25.000
+      </button>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Order & Payment Modal -->
+  <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50" id="payment-modal">
+   <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-lg">
+    <button aria-label="Tutup modal" class="absolute top-3 right-3 text-gray-600 hover:text-gray-900 focus:outline-none" id="close-modal">
+     <i class="fas fa-times text-xl">
+     </i>
+    </button>
+    <h3 class="text-2xl font-bold mb-4 text-indigo-700" id="modal-product-name">
+     Produk
+    </h3>
+    <p class="mb-4 text-gray-700 font-semibold" id="modal-product-price">
+     Harga: Rp 0
+    </p>
+    <div class="mb-6 text-center">
+     <h4 class="font-semibold mb-2 text-indigo-700">
+      Metode Pembayaran QRIS Dana
+     </h4>
+     <img alt="Kode QRIS Dana berwarna biru dengan logo Dana di tengah" class="mx-auto mb-4 rounded-lg shadow-md" src="https://files.catbox.moe/xdj5t1.jpg?text=QRIS+Dana+Code"/>
+     <button class="w-full bg-indigo-700 text-white py-2 rounded-lg hover:bg-indigo-900 transition font-semibold shadow-md" data-number="081234567890" id="copy-dana-number">
+      Dana: 085366010255
+     </button>
+     <p class="text-green-600 mt-2 text-center hidden" id="copy-feedback">
+      Nomor Dana berhasil disalin!
+     </p>
+    </div>
+    <div class="text-center">
+     <button class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition font-semibold shadow-md" id="whatsapp-admin">
+      Hubungi Admin via WhatsApp untuk Klaim Data
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Testimoni Section -->
+  <section class="bg-white py-16 px-6" id="testimoni">
+   <h2 class="text-3xl font-bold text-center mb-6 text-indigo-700">
+    Testimoni Real Satria
+   </h2>
+   <div class="text-center mb-8">
+    <a aria-label="Gabung Grup WhatsApp Testimoni Real Satria" class="inline-block bg-green-600 text-white py-3 px-8 rounded-full hover:bg-green-700 transition font-semibold shadow-lg" href="https://whatsapp.com/channel/0029VbAz5ms4tRrvyu8rmE1x" rel="Satria Reall" target="_blank">
+     Gabung Grup WhatsApp Testimoni Real Satria
+    </a>
+   </div>
+  </section>
+  <!-- Order Section -->
+  <section class="max-w-4xl mx-auto px-6 py-16" id="order">
+   <h2 class="text-3xl font-bold text-center mb-12 text-indigo-700">
+    Order Kebutuhan Lain
+   </h2>
+   <form class="bg-white rounded-2xl shadow-lg p-8 space-y-6" id="order-form">
+    <div>
+     <label class="block font-semibold mb-2 text-indigo-700" for="order-name">
+      Nama Lengkap
+     </label>
+     <input class="w-full border border-indigo-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" id="order-name" name="order-name" placeholder="nama lengkap Anda" required="" type="text"/>
+    </div>
+    <div>
+     <label class="block font-semibold mb-2 text-indigo-700" for="order-phone">
+      Nomor WhatsApp
+     </label>
+     <input class="w-full border border-indigo-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" id="order-phone" name="order-phone" placeholder="Contoh: 081234567890" required="" type="tel"/>
+    </div>
+    <div>
+     <label class="block font-semibold mb
