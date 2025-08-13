@@ -520,4 +520,133 @@ FOLOWER
      <input class="w-full border border-indigo-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" id="order-phone" name="order-phone" placeholder="Contoh: 081234567890" required="" type="tel"/>
     </div>
     <div>
-     <label class="block font-semibold mb
+         <label class="block font-semibold mb-2 text-indigo-700" for="order-description">
+      Deskripsi Kebutuhan
+     </label>
+     <textarea class="w-full border border-indigo-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" id="order-description" name="order-description" placeholder="Jelaskan kebutuhan produk atau jasa yang Anda inginkan" required="" rows="4"></textarea>
+    </div>
+    <button class="w-full bg-indigo-700 text-white py-3 rounded-full hover:bg-indigo-900 transition font-semibold shadow-lg" type="submit">
+     Kirim Order
+    </button>
+   </form>
+   <div class="hidden mt-10 bg-white rounded-2xl shadow-lg p-6 text-center" id="order-payment-info">
+    <h3 class="text-2xl font-bold mb-4 text-indigo-700">
+     Metode Pembayaran QRIS Dana
+    </h3>
+    <img alt="Kode QRIS Dana berwarna biru dengan logo Dana di tengah" class="mx-auto mb-4 rounded-lg shadow-md" src="https://files.catbox.moe/xdj5t1.jpg?text=QRIS+Dana+Code"/>
+    <button class="w-full bg-indigo-700 text-white py-2 rounded-lg hover:bg-indigo-900 transition font-semibold shadow-md" data-number="085366010255" id="copy-dana-number-order">
+     Dana: 085366010255
+    </button>
+    <p class="text-green-600 mt-2 text-center hidden" id="copy-feedback-order">
+     Nomor Dana berhasil disalin!
+    </p>
+    <a class="inline-block mt-6 bg-green-600 text-white py-3 px-8 rounded-full hover:bg-green-700 transition font-semibold shadow-lg" href="https://wa.me/6285366010255?text=Halo%20Admin%20Satria%2C%20saya%20telah%20melakukan%20pembayaran%20dan%20ingin%20klaim%20data%20order." rel="noopener noreferrer" target="_blank">
+     Hubungi Admin via WhatsApp untuk Klaim Data
+    </a>
+   </div>
+  </section>
+  <!-- Kontak Section -->
+  <section class="bg-indigo-700 text-white py-16 px-6" id="kontak">
+   <h2 class="text-3xl font-bold text-center mb-12">
+    Sosial Media Satria
+   </h2>
+   <div class="social-icons flex justify-center gap-12 max-w-sm mx-auto">
+    <a aria-label="YouTube Satria Store" class="youtube" href="https://www.youtube.com/@Satria07Reall" rel="noopener noreferrer" target="_blank" title="YouTube Satria Store">
+     <i class="fab fa-youtube">
+     </i>
+    </a>
+    <a aria-label="TikTok Satria Store" class="tiktok" href="https://www.tiktok.com/@satria" rel="noopener noreferrer" target="_blank" title="TikTok Satria Store">
+     <i class="fab fa-tiktok">
+     </i>
+    </a>
+    <a aria-label="Instagram Satria Store" class="instagram" href="https://www.instagram.com/satria07_real?igsh=ZTRza2k3bGg4OWU5" rel="noopener noreferrer" target="_blank" title="Instagram Satria Store">
+     <i class="fab fa-instagram">
+     </i>
+    </a>
+   </div>
+  </section>
+  <footer class="bg-indigo-700 text-center py-6 text-indigo-200 font-semibold">
+   © 2025 Satria Real 55-35
+  </footer>
+  <script>
+   // Mobile menu toggle
+   const menuBtn = document.getElementById('menu-btn');
+   const mobileMenu = document.getElementById('mobile-menu');
+   menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+   });
+
+   // Payment modal elements
+   const paymentModal = document.getElementById('payment-modal');
+   const closeModalBtn = document.getElementById('close-modal');
+   const modalProductName = document.getElementById('modal-product-name');
+   const modalProductPrice = document.getElementById('modal-product-price');
+   const copyDanaBtn = document.getElementById('copy-dana-number');
+   const copyFeedback = document.getElementById('copy-feedback');
+   const whatsappAdminBtn = document.getElementById('whatsapp-admin');
+
+   // Dana number for payment
+   const danaNumber = copyDanaBtn.getAttribute('data-number');
+   const whatsappNumber = '6285366010255'; // Admin WA number in international format without +
+
+   // Show modal on buy button click
+   document.querySelectorAll('.buy-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+     const product = btn.getAttribute('data-product');
+     const price = btn.getAttribute('data-price');
+     modalProductName.textContent = product;
+     modalProductPrice.textContent = `Harga: Rp ${Number(price).toLocaleString('id-ID')}`;
+     paymentModal.classList.remove('hidden');
+     copyFeedback.classList.add('hidden');
+    });
+   });
+
+   // Close modal
+   closeModalBtn.addEventListener('click', () => {
+    paymentModal.classList.add('hidden');
+   });
+
+   // Copy Dana number
+   copyDanaBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(danaNumber).then(() => {
+     copyFeedback.classList.remove('hidden');
+     setTimeout(() => copyFeedback.classList.add('hidden'), 2000);
+    });
+   });
+
+   // WhatsApp admin link with product info
+   whatsappAdminBtn.addEventListener('click', () => {
+    const product = modalProductName.textContent;
+    const message = encodeURIComponent(
+     `Halo Admin Satria, saya telah melakukan pembayaran untuk produk ${product} dan ingin klaim data.`
+    );
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+   });
+
+   // Order form handling
+   const orderForm = document.getElementById('order-form');
+   const orderPaymentInfo = document.getElementById('order-payment-info');
+   const copyDanaOrderBtn = document.getElementById('copy-dana-number-order');
+   const copyFeedbackOrder = document.getElementById('copy-feedback-order');
+
+   orderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Normally here you would send order data to server
+    orderForm.reset();
+    orderPaymentInfo.classList.remove('hidden');
+    copyFeedbackOrder.classList.add('hidden');
+    orderPaymentInfo.scrollIntoView({ behavior: 'smooth' });
+   });
+
+   // Copy Dana number for order
+   copyDanaOrderBtn.addEventListener('click', () => {
+    const number = copyDanaOrderBtn.getAttribute('data-number');
+    navigator.clipboard.writeText(number).then(() => {
+     copyFeedbackOrder.classList.remove('hidden');
+     setTimeout(() => copyFeedbackOrder.classList.add('hidden'), 2000);
+    });
+   });
+  </script>
+ </body>
+</html>
+
